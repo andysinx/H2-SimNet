@@ -73,8 +73,6 @@ QFAD/
 │   ├── anomaly_detection_classifiers/
 │   │   ├── __init__.py
 │   │   ├── anomaly_detection_classifier.py
-│   ├── data_extraction/
-│   │   └── selected_features.xlsx
 │   ├── jupyter/
 │   │   └── anomaly_detection_enea.ipynb
 │   ├── time_series_plot/
