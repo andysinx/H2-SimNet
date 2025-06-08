@@ -27,13 +27,11 @@ This pipeline allows us to compare classical and quantum-enhanced architectures,
 
 <div align="center">
 
-  <img src="./enea/000586C5-inquinamento.jpg" alt="Air Pollution" width="45%" style="display:inline-block; margin-right:10px;">
   <img src="./enea/quantum lst.png" alt="Quantum LSTM" width="45%" style="display:inline-block;">
-  
+  <img src="./enea/trasporto-idrogeno.jpg" alt="Hydrogen Network Station" width="45% style="display:inline-block;">
   <br><br>
   
   <img src="./enea/federated-gif.gif" alt="Federated Learning Animation" width="60%">
-  <img src="./enea/trasporto-idrogeno.jpg" alt="Hydrogen Network Station" width="45% style="display:inline-block;">
 
 </div>
 
@@ -42,39 +40,13 @@ This pipeline allows us to compare classical and quantum-enhanced architectures,
 ## 📁 Project Structure
 
 ```QFAD/
-├── Data_train/
-│ ├── 0/
-│ ├── 0_pp/
-│ ├── 1/
-│ ├── 1_pp/
-│ ├── 2/
-│ ├── 2_pp/
-│ ├── 3/
-│ └── 3_pp/
-├── Data_train_plots/
-│ ├── 0/
-│ ├── 0_preproc/
-│ ├── 1/
-│ ├── 1_preproc/
-│ ├── 2/
-│ ├── 2_preproc/
-│ ├── 3/
-│ └── 3_preproc/
-├── model_train_saved/
-│ ├── lstm_autoencoder_model.pth
-│ ├── quantum_lstm_autoencoder.pth
-│ └── quantumtr_lstm_autoencoder.pth
-├── 000586C5-inquinamento.jpg
-├── README.md
-├── clean_dataset.ipynb
-├── federated-gif.gif
-├── quantum lst.png
-├── quantum_training_LSTM.ipynb
-├── training_classical_LSTM.ipynb
-├── requirements.txt
-├── training_classical_LSTM.ipynb
-├── training_models.ipynb
-└── training_quantum_LSTM.ipynb
+├── enea/
+│ ├── _pycache__/
+│ ├── anomaly_detection_classifiers/
+│ ├── Data_extraction/
+│ ├── jupyter/
+│ ├── time_series_plot/
+└──  utils/
 ``` 
 ---
 
