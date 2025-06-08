@@ -1,14 +1,26 @@
 # ⚛️🤖🧠  HQ-FHLRE: Hybrid-Quantum Federated Hydrogen Leak Recognition Engine 🖥️🌐
 
-This repository contains experiments from my Industrial Ph.D. project in Computational Intelligence at UniNa (scholarship funded by ENEA), focused on anomaly detection in hydrogen transport networks.
+This repository contains the core research activities of my Industrial Ph.D. project in Computational Intelligence at the University of Naples Federico II (UniNa), funded by ENEA. This work represents the **primary objective** of my doctoral scholarship and is focused on the development of intelligent systems for anomaly analysis in hydrogen transport networks.
+
+The research is structured in three main stages:
+
+1. **Anomaly Detection** – identifying abnormal patterns in multivariate time series from pressure sensors across the hydrogen network.
+2. **Anomaly Classification** – categorizing the type of anomaly (e.g., valve closure, compressor failure, local restriction).
+3. **Anomaly Localization** – determining the precise location of the fault using **Deep Reinforcement Learning (DRL)**.
+
+Each stage is initially tackled using **classical machine learning and deep learning techniques**, and then extended to the **quantum domain** using hybrid approaches. In particular:
+- **Hybrid Quantum-Classical Neural Networks** are applied for detection and classification.
+- **Variational Quantum Deep Reinforcement Learning (VQDRL)** strategies are explored for the localization task, leveraging quantum circuits to model complex decision-making policies.
+
+The hydrogen transport system is simulated using **Simscape**, and the dataset includes both normal operation and multiple anomalous scenarios. Federated learning is also employed to ensure **data privacy** and **decentralized intelligence**, reflecting real-world industrial constraints.
+
+This repository reflects the full methodological evolution of the project—from classical to quantum intelligence and stands as the **central deliverable** of my Ph.D. research.
 
 We simulate a hydrogen pipeline system using **Simscape**, collecting multivariate time series from **four pressure sensors**. The dataset includes:
 - A **normal operating scenario**, in which the pressure stabilizes after an initial transient.
-- **Three anomalous scenarios**: local restrictions, valve closures, and compressor failures.
+- **Two anomalous scenarios**: local restrictions (valve closures) and compressor failures.
 
 Anomalies manifest as subtle, asynchronous perturbations across the sensor time series—making this a challenging **multivariate anomaly detection** task.
-
-
 
 **HQ-FHLRE** (Hybrid-Quantum Federated Hydrogen Leak Recognition Engine) is the experimental framework in which we apply:
 1. **Local training** of anomaly detection models on each simulated scenario.
