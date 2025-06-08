@@ -28,7 +28,7 @@ This pipeline allows us to compare classical and quantum-enhanced architectures,
 <div align="center">
 
   <img src="./enea_h2net_v2/quantum lst.png" alt="Quantum LSTM" width="45%" style="display:inline-block;">
-  <img src="./enea_h2net_v2/trasporto-idrogeno.jpg" alt="Hydrogen Network Station" width="45% style="display:inline-block;">
+  <img src="./enea_h2net_v2/hydrogen-station.jpg" alt="Hydrogen Network Station" width="45% style="display:inline-block;">
   <br><br>
   
   <img src="./enea_h2net_v2/federated-gif.gif" alt="Federated Learning Animation" width="60%">
