@@ -12,7 +12,7 @@ Each stage is initially tackled using **classical machine learning and deep lear
 - **Hybrid Quantum-Classical Neural Networks** are applied for detection and classification.
 - **Variational Quantum Deep Reinforcement Learning (VQDRL)** strategies are explored for the localization task, leveraging quantum circuits to model complex decision-making policies.
 
-The hydrogen transport system is simulated using **Simscape**, and the dataset includes both normal operation and multiple anomalous scenarios. Federated learning is also employed to ensure **data privacy** and **decentralized intelligence**, reflecting real-world industrial constraints.
+The hydrogen transport system is simulated using **Simscape Fluids**, and the dataset includes both normal operation and multiple anomalous scenarios. Federated learning is also employed to ensure **data privacy** and **decentralized intelligence**, reflecting real-world industrial constraints.
 
 This repository reflects the full methodological evolution of the project—from classical to quantum intelligence and stands as the **central deliverable** of my Ph.D. research.
 
