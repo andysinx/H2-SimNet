@@ -43,7 +43,7 @@ The project includes two distinct simulation phases, each represented by a separ
   This folder contains early-stage experiments based on a simplified hydrogen network model simulated in **Simscape**. At this stage, anomaly detection was performed using traditional machine learning techniques such as **Isolation Forest**, **One-Class SVM**, and basic **statistical thresholding**.
 
 - **`enea_h2net_v2/`**  
-  As the initial model proved limited in complexity and realism, we developed a more detailed and representative simulation of the hydrogen transport network. In this phase, we introduced advanced deep learning architectures such as **LSTM**, **QLSTM**, and **QTLSTM**—applied both in standalone settings and within a **federated learning** framework—to better capture temporal dependencies and asynchronous multivariate anomalies.
+  As the initial model proved limited in complexity and realism, we developed a more detailed and representative simulation of the hydrogen transport network. In this phase, we introduced advanced deep learning architectures such as **LSTM**, **QLSTM**, and **QTLSTM** applied both in standalone settings and within a **federated learning** framework to better capture temporal dependencies and asynchronous multivariate anomalies.
 
 This evolution reflects the methodological progression of the project: from classical ML on simplified systems to hybrid quantum-classical deep learning in more realistic, complex environments.
 
