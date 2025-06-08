@@ -40,13 +40,32 @@ This pipeline allows us to compare classical and quantum-enhanced architectures,
 ## 📁 Project Structure
 
 ```QFAD/
+QFAD/
 ├── enea/
-│ ├── _pycache__/
-│ ├── anomaly_detection_classifiers/
-│ ├── Data_extraction/
-│ ├── jupyter/
-│ ├── time_series_plot/
-└──  utils/
+│   ├── __pycache__/
+│   ├── anomaly_detection_classifiers/
+│   │   ├── __init__.py
+│   │   ├── anomaly_detection_classifier.py
+│   ├── data_extraction/
+│   │   └── selected_features.xlsx
+│   ├── jupyter/
+│   │   └── anomaly_detection_enea.ipynb
+│   ├── time_series_plot/
+│   │   ├── time_series_0.png
+│   │   ├── time_series_1.png
+│   │   ├── time_series_2.png
+│   │   └── time_series_3.png
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   └── utils_data.py
+│   ├── anomaly_detection_classifier.cpython-310.pyc
+│   ├── utils_data.cpython-310.pyc
+│   ├── anomaly_detection_hydrogen_network_pressure_sensors.py
+├── federated-gif.gif
+├── quantum lst.png
+├── trasporto-idrogeno.jpg
+├── output.txt
+└── README.md
 ``` 
 ---
 
