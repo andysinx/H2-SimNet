@@ -10,7 +10,7 @@ Anomalies manifest as subtle, asynchronous perturbations across the sensor time 
 
 
 
-**QFADH** (Quantum Federated Anomaly Detection for Hydrogen) is the experimental framework in which we apply:
+**HQ-FHLRE** (Hybrid-Quantum Federated Hydrogen Leak Recognition Engine) is the experimental framework in which we apply:
 1. **Local training** of anomaly detection models on each simulated scenario.
 2. **Federated learning**, where models trained locally share only parameters—not data—preserving privacy and enabling **decentralized intelligence**.
 
@@ -35,13 +35,25 @@ This pipeline allows us to compare classical and quantum-enhanced architectures,
 
 </div>
 
+## 🧪 Dataset & Experimental Versions
+
+The project includes two distinct simulation phases, each represented by a separate folder:
+
+- **`enea_h2net_v1/`**  
+  This folder contains early-stage experiments based on a simplified hydrogen network model simulated in **Simscape**. At this stage, anomaly detection was performed using traditional machine learning techniques such as **Isolation Forest**, **One-Class SVM**, and basic **statistical thresholding**.
+
+- **`enea_h2net_v2/`**  
+  As the initial model proved limited in complexity and realism, we developed a more detailed and representative simulation of the hydrogen transport network. In this phase, we introduced advanced deep learning architectures such as **LSTM**, **QLSTM**, and **QTLSTM**—applied both in standalone settings and within a **federated learning** framework—to better capture temporal dependencies and asynchronous multivariate anomalies.
+
+This evolution reflects the methodological progression of the project: from classical ML on simplified systems to hybrid quantum-classical deep learning in more realistic, complex environments.
+
 ---
 
 ## 📁 Project Structure
 
 ```QFAD/
 QFAD/
-├── enea/
+├── enea_h2net_v1/
 │   ├── __pycache__/
 │   ├── anomaly_detection_classifiers/
 │   │   ├── __init__.py
@@ -61,6 +73,8 @@ QFAD/
 │   ├── anomaly_detection_classifier.cpython-310.pyc
 │   ├── utils_data.cpython-310.pyc
 │   ├── anomaly_detection_hydrogen_network_pressure_sensors.py
+├── enea_h2net_v2
+    ├── ...
 ├── federated-gif.gif
 ├── quantum lst.png
 ├── trasporto-idrogeno.jpg
