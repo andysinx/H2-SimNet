@@ -29,11 +29,6 @@ Anomalies manifest as subtle, asynchronous perturbations across the sensor time 
 1. **Local training** of anomaly detection models on each simulated scenario.
 2. **Federated learning**, where models trained locally share only parameters—not data—preserving privacy and enabling **decentralized intelligence**.
 
-### ✨ Models used (deployed both locally and in federated setting):
-- **LSTM Autoencoder** – classical deep learning baseline.
-- **QLSTM** – LSTM augmented with hybrid quantum-classical gates.
-- **QTLSTM** – Classical LSTM trained using parameters generated from quantum circuits (Quantum Train approach).
-
 ---
 
 This pipeline allows us to compare classical and quantum-enhanced architectures, first in an isolated (local) setting, then within a federated learning framework, providing insight into:
@@ -98,9 +93,9 @@ QFAD/
 
 ## 🧠 Models Overview
 
-- **LSTM Autoencoder**: Classical baseline.
-- **QLSTM**: LSTM with hybrid classical-quantum architecture.
-- **QTLSTM**: Quantum train protocols for Classical LSTM.
+- **LSTM Autoencoder** – classical deep learning baseline.
+- **QLSTM** – LSTM augmented with hybrid quantum-classical gates.
+- **QTLSTM** – Classical LSTM trained using parameters generated from quantum circuits (Quantum Train approach).
 ---
 
 ## 🚀 Getting Started
@@ -108,7 +103,23 @@ QFAD/
 1. Install the dependencies:
    ```bash
    pip install -r requirements.txt
+   git clone https://github.com/andysinx/HQ-FHLRE.git
+   cd HQ-FHLRE
    ```
+
+## 📈 Results and Validation  
+Section under preparation, pending completion of experiments and evaluation analyses.
+
+## 🔮 Future Next Steps  
+- Completion of experimentation with hybrid models and federated learning.  
+- Collaboration with the University of Warsaw for acquisition and use of specialized software for advanced gas network modeling, moving towards more realistic simulations.  
+- Development and validation of classical and hybrid quantum Deep Reinforcement Learning models for the localization phase.  
+- Integration of the sensor placement optimization module (optional phase), addressing network topology considerations.
+
+## 📄 Disclaimer and Notes  
+The data used are confidential and cannot be publicly shared due to non-disclosure agreements with the industrial partner (ENEA).  
+
+The framework is continuously evolving, with implementations and models periodically updated within the scope of the Ph.D. research.
 
 
 
