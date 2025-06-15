@@ -117,9 +117,8 @@ Section under preparation, pending completion of experiments and evaluation anal
 - Integration of the sensor placement optimization module (optional phase), addressing network topology considerations.
 
 ## 📄 Disclaimer and Notes  
-The data used are confidential and cannot be publicly shared due to non-disclosure agreements with the industrial partner (ENEA).  
-
-The framework is continuously evolving, with implementations and models periodically updated within the scope of the Ph.D. research.
+- The data used are confidential and cannot be publicly shared due to non-disclosure agreements with the industrial partner (ENEA).  
+- The framework is continuously evolving, with implementations and models periodically updated within the scope of the Ph.D. research.
 
 
 
