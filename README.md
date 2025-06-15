@@ -1,4 +1,4 @@
-# ⚛️🤖🧠  HQ-FHLRE: Hybrid-Quantum Federated Hydrogen Leak Recognition Engine 🖥️🌐
+# ⚛️🤖🧠  HQ-HLRE: Hybrid-Quantum Hydrogen Leak Recognition Engine 🖥️🌐
 
 This repository contains the core research activities of my Industrial Ph.D. project in Computational Intelligence at the University of Naples Federico II (UniNa), funded by ENEA. This work represents the **primary objective** of my doctoral scholarship and is focused on the development of intelligent systems for anomaly analysis in hydrogen transport networks.
 
@@ -25,7 +25,7 @@ We simulate a hydrogen pipeline system using **Simscape**, collecting multivaria
 
 Anomalies manifest as subtle, asynchronous perturbations across the sensor time series—making this a challenging **multivariate anomaly detection** task.
 
-**HQ-FHLRE** (Hybrid-Quantum Federated Hydrogen Leak Recognition Engine) is the experimental framework in which we apply:
+**HQ-HLRE** (Hybrid-Quantum Federated Hydrogen Leak Recognition Engine) is the experimental framework in which we apply:
 1. **Local training** of anomaly detection models on each simulated scenario.
 2. **Federated learning**, where models trained locally share only parameters—not data—preserving privacy and enabling **decentralized intelligence**.
 
