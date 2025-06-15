@@ -25,7 +25,7 @@ We simulate a hydrogen pipeline system using **Simscape**, collecting multivaria
 
 Anomalies manifest as subtle, asynchronous perturbations across the sensor time series—making this a challenging **multivariate anomaly detection** task.
 
-**HNARE** (Hybrid-Quantum Federated Hydrogen Leak Recognition Engine) is the experimental framework in which we apply:
+**HNARE** is the experimental framework in which we apply:
 1. **Local training** of anomaly detection models on each simulated scenario.
 2. **Federated learning**, where models trained locally share only parameters—not data—preserving privacy and enabling **decentralized intelligence**.
 
