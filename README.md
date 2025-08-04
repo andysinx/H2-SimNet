@@ -16,7 +16,7 @@ These limitations necessitate new **monitoring, simulation, and anomaly detectio
 ![Hydrogen Station](enea_h2net_v2/hydrogen-station.jpg)
 ## 🧠 The Digital Twin Approach
 
-We simulate a hydrogen pipeline system using **MATLAB Simscape**, generating multivariate time series from pressure sensors. This Digital Twin enables:
+We simulate a hydrogen pipeline system using **MATLAB Simscape**, generating multivariate time series from pressure sensors and mass flow rate sensors. This Digital Twin enables:
 
 - Accurate modeling of **transient and steady-state dynamics**.
 - Injection of various **anomalous scenarios**: leaks, compressor failures, delayed responses.
