@@ -1,0 +1,86 @@
+Risultati LSTM
+
+
+
+solo sensori pressione:
+
+
+Con somma errori mse:
+
+Best k: 0.50 with AUC: 0.5340
+
+=== Classification Report for best k ===
+              precision    recall  f1-score   support
+
+      Normal       0.23      0.61      0.33    550199
+     Anomaly       0.89      0.59      0.71   2849701
+
+    accuracy                           0.60   3399900
+   macro avg       0.56      0.60      0.52   3399900
+weighted avg       0.78      0.60      0.65   3399900
+
+=== Confusion Matrix for best k ===
+[[ 337088  213111]
+ [1158022 1691679]]
+
+
+
+ con Mahalanobis distance:
+
+ 
+Best k: 0.50 with AUC: 0.5836
+
+=== Classification Report for best k ===
+              precision    recall  f1-score   support
+
+      Normal       0.14      0.69      0.23    550199
+     Anomaly       0.76      0.19      0.31   2849701
+
+    accuracy                           0.27   3399900
+   macro avg       0.45      0.44      0.27   3399900
+weighted avg       0.66      0.27      0.30   3399900
+
+=== Confusion Matrix for best k ===
+[[ 378443  171756]
+ [2294784  554917]]
+
+
+
+
+ con mfr sensor:
+
+con somma errori mse:
+Best k: 0.50 with AUC: 0.6909
+
+=== Classification Report for best k ===
+              precision    recall  f1-score   support
+
+      Normal       0.42      0.59      0.49    550199
+     Anomaly       0.91      0.84      0.88   2849701
+
+    accuracy                           0.80   3399900
+   macro avg       0.67      0.72      0.68   3399900
+weighted avg       0.83      0.80      0.82   3399900
+
+=== Confusion Matrix for best k ===
+[[ 323370  226829]
+ [ 443088 2406613]]
+
+
+ con mahalanobis distance:
+ 
+Best k: 0.50 with AUC: 0.6429
+
+=== Classification Report for best k ===
+              precision    recall  f1-score   support
+
+      Normal       0.16      0.68      0.26    550199
+     Anomaly       0.83      0.30      0.44   2849701
+
+    accuracy                           0.36   3399900
+   macro avg       0.49      0.49      0.35   3399900
+weighted avg       0.72      0.36      0.41   3399900
+
+=== Confusion Matrix for best k ===
+[[ 376453  173746]
+ [2003849  845852]]

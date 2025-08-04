@@ -1,0 +1,284 @@
+1) ONE CLASS SVM:
+Solo Pressione:
+Best model: nu=0.01, gamma=scale, kernel=poly → recall_0_train=0.9984
+
+Recall (classe 0 - normali) sul test set: 0.9931
+Recall (classe 1 - anomalie) sul test set: 0.1003
+
+AUC ROC:0.78
+Confusion Matrix (test):
+[[ 327877    2267]
+ [1538338  171518]]
+
+Classification Report (test):
+              precision    recall  f1-score   support
+
+           0     0.1757    0.9931    0.2986    330144
+           1     0.9870    0.1003    0.1821   1709856
+
+    accuracy                         0.2448   2040000
+   macro avg     0.5813    0.5467    0.2403   2040000
+weighted avg     0.8557    0.2448    0.2010   2040000
+
+
+
+Con sensori di mass flow rate:
+Best model: nu=0.01, gamma=scale, kernel=poly → recall_0_train=0.9985
+
+Recall (classe 0 - normali) sul test set: 0.9871
+Recall (classe 1 - anomalie) sul test set: 0.0973
+AUC ROC:0.605
+Confusion Matrix (test):
+[[ 325895    4249]
+ [1543455  166401]]
+
+Classification Report (test):
+              precision    recall  f1-score   support
+
+           0     0.1743    0.9871    0.2963    330144
+           1     0.9751    0.0973    0.1770   1709856
+
+    accuracy                         0.2413   2040000
+   macro avg     0.5747    0.5422    0.2367   2040000
+weighted avg     0.8455    0.2413    0.1963   2040000
+
+
+2) ISOLATION FOREST:
+
+Solo pressione: 
+Best params found: contamination=0.01, max_samples=0.7, n_estimators=50, recall normal (train)=0.9887
+
+[TEST SET]
+Recall (normali, classe 0): 0.6322
+Sensitivity (anomalie, classe 1): 0.6040
+AUC ROC:0.710
+Confusion Matrix:
+[[ 208703  121441]
+ [ 677132 1032724]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.2356    0.6322    0.3433    330144
+           1     0.8948    0.6040    0.7212   1709856
+
+    accuracy                         0.6085   2040000
+   macro avg     0.5652    0.6181    0.5322   2040000
+
+
+Con sensori di mass flow rate:
+
+Best params found: contamination=0.01, max_samples=0.7, n_estimators=100, recall normal (train)=0.9886
+
+[TEST SET]
+Recall (normali, classe 0): 0.4904
+Sensitivity (anomalie, classe 1): 0.6331
+AUC ROC:0.623
+Confusion Matrix:
+[[ 161896  168248]
+ [ 627430 1082426]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.2051    0.4904    0.2892    330144
+           1     0.8655    0.6331    0.7312   1709856
+
+    accuracy                         0.6100   2040000
+   macro avg     0.5353    0.5617    0.5102   2040000
+weighted avg     0.7586    0.6100    0.6597   2040000
+
+
+
+
+
+3) Local Outlier Factor (LOF):
+
+Solo sensori di pressione:
+Best params for LOF: {'n_neighbors': 30, 'contamination': 0.01}, recall normal (train)=0.9918
+
+Test set results for LOF:
+Recall normal (classe 0): 0.0801
+Sensitivity anomalie (classe 1): 0.9494
+
+AUC ROC:0.727
+Confusion Matrix:
+[[  26450  303694]
+ [  86444 1623412]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.2343    0.0801    0.1194    330144
+           1     0.8424    0.9494    0.8927   1709856
+
+    accuracy                         0.8088   2040000
+   macro avg     0.5383    0.5148    0.5061   2040000
+weighted avg     0.7440    0.8088    0.7676   2040000
+
+
+con mass flow rate sensor:
+
+Best params for LOF: {'n_neighbors': 30, 'contamination': 0.01}, recall normal (train)=0.9921
+
+Test set results for LOF:
+Recall normal (classe 0): 0.0423
+Sensitivity anomalie (classe 1): 0.9822
+AUC ROC:0.508
+Confusion Matrix:
+[[  13967  316177]
+ [  30435 1679421]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.3146    0.0423    0.0746    330144
+           1     0.8416    0.9822    0.9065   1709856
+
+    accuracy                         0.8301   2040000
+   macro avg     0.5781    0.5123    0.4905   2040000
+weighted avg     0.7563    0.8301    0.7718   2040000
+
+4) Elliptic Envelope:
+
+Best params for EllipticEnvelope: {'contamination': 0.01}, recall normal (train)=0.9970
+
+Test set results for EllipticEnvelope:
+Recall normal (classe 0): 0.6579
+Sensitivity anomalie (classe 1): 0.5756
+
+AUC ROC:0.618
+Confusion Matrix:
+[[217203 112941]
+ [725726 984130]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.2303    0.6579    0.3412    330144
+           1     0.8971    0.5756    0.7012   1709856
+
+    accuracy                         0.5889   2040000
+   macro avg     0.5637    0.6167    0.5212   2040000
+weighted avg     0.7892    0.5889    0.6430   2040000
+
+
+con mass flow rate sensor:
+
+
+Best params for EllipticEnvelope: {'contamination': 0.01}, recall normal (train)=0.9905
+
+Test set results for EllipticEnvelope:
+Recall normal (classe 0): 0.6392
+Sensitivity anomalie (classe 1): 0.7837
+
+AUC ROC:0.639
+Confusion Matrix:
+[[ 211016  119128]
+ [ 369907 1339949]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.3632    0.6392    0.4632    330144
+           1     0.9184    0.7837    0.8457   1709856
+
+    accuracy                         0.7603   2040000
+   macro avg     0.6408    0.7114    0.6545   2040000
+weighted avg     0.8285    0.7603    0.7838   2040000
+
+
+
+5) MCD:
+
+solo sensori di pressione:
+Best params for MCD: {'support_fraction': 0.7, 'contamination': 0.01}, recall normal (train)=0.9977
+
+Test set results for MCD:
+Recall normal (classe 0): 0.9382
+Sensitivity anomalie (classe 1): 0.0000
+
+AUC ROC:0.586
+Confusion Matrix:
+[[ 309744   20400]
+ [1709856       0]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.1534    0.9382    0.2636    330144
+           1     0.0000    0.0000    0.0000   1709856
+
+    accuracy                         0.1518   2040000
+   macro avg     0.0767    0.4691    0.1318   2040000
+weighted avg     0.0248    0.1518    0.0427   2040000
+
+
+con mass flow rate sensor:
+
+Best params for MCD: {'support_fraction': 0.7, 'contamination': 0.01}, recall normal (train)=0.9936
+
+Test set results for MCD:
+Recall normal (classe 0): 1.0000
+Sensitivity anomalie (classe 1): 0.0119
+AUC ROC:0.655
+Confusion Matrix:
+[[ 330144       0]
+ [1689456   20400]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.1635    1.0000    0.2810    330144
+           1     1.0000    0.0119    0.0236   1709856
+
+    accuracy                         0.1718   2040000
+   macro avg     0.5817    0.5060    0.1523   2040000
+weighted avg     0.8646    0.1718    0.0652   2040000
+
+
+6) K-Nearest Neighbours:
+
+Solo sensori di pressione: 
+Best params for kNN: {'n_neighbors': 10, 'contamination': 0.01}, recall normal (train)=0.9871
+
+Test set results for kNN:
+Recall normal (classe 0): 0.4440
+Sensitivity anomalie (classe 1): 0.7566
+AUC ROC:0.561
+Confusion Matrix:
+[[ 146600  183544]
+ [ 416198 1293658]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.2605    0.4440    0.3284    330144
+           1     0.8757    0.7566    0.8118   1709856
+
+    accuracy                         0.7060   2040000
+   macro avg     0.5681    0.6003    0.5701   2040000
+weighted avg     0.7762    0.7060    0.7336   2040000
+
+
+con mass flow rate sensor:
+
+Best params for kNN: {'n_neighbors': 10, 'contamination': 0.01}, recall normal (train)=0.9880
+
+Test set results for kNN:
+Recall normal (classe 0): 0.3097
+Sensitivity anomalie (classe 1): 0.8483
+AUC ROC:0.636
+Confusion Matrix:
+[[ 102253  227891]
+ [ 259396 1450460]]
+
+Classification Report:
+              precision    recall  f1-score   support
+
+           0     0.2827    0.3097    0.2956    330144
+           1     0.8642    0.8483    0.8562   1709856
+
+    accuracy                         0.7611   2040000
+   macro avg     0.5735    0.5790    0.5759   2040000
+weighted avg     0.7701    0.7611    0.7655   2040000
