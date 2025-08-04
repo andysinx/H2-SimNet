@@ -1,124 +1,86 @@
-# ⚛️🤖🧠  HNARE: Hydrogen Network Anomaly Recognition Engine 🖥️🌐
+# 💨🛠️ A Testbed Dataset for Anomaly Detection in Hydrogen Transport Networks
 
-This repository contains the core research activities of my Industrial Ph.D. project in Computational Intelligence at the University of Naples Federico II (UniNa), funded by ENEA. This work represents the **primary objective** of my doctoral scholarship and is focused on the development of intelligent systems for anomaly analysis in hydrogen transport networks.
+This repository provides the simulation framework and baseline models developed in support of the paper _“A Testbed Dataset for Anomaly Detection in Hydrogen Transport Networks”_, which addresses the technical and safety challenges of transporting hydrogen through existing gas pipeline infrastructure.
 
-The research is structured in three main stages:
+## 🌍 Motivation
 
-1. **Anomaly Detection** – identifying abnormal patterns in multivariate time series from pressure sensors across the hydrogen network.
-2. **Anomaly Classification** – categorizing the type of anomaly (e.g., valve closure, compressor failure, local restriction).
-3. **Anomaly Localization** – determining the precise location of the fault using **Deep Reinforcement Learning (DRL)**.
+Hydrogen is a zero-emission energy carrier with the potential to decarbonize critical sectors such as transportation, power generation, and heavy industry. However, adapting existing **natural gas networks** for hydrogen or hydrogen blends introduces significant challenges:
 
-Each stage is initially tackled using **classical machine learning and deep learning techniques**, and then extended to the **quantum domain** using hybrid approaches. In particular:
-- **Hybrid Quantum-Classical Neural Networks** are applied for detection and classification.
-- **Variational Quantum Deep Reinforcement Learning (VQDRL)** strategies are explored for the localization task, leveraging quantum circuits to model complex decision-making policies.
+- Hydrogen molecules are **smaller and lighter** than methane, leading to increased permeability and higher risk of **leaks**, especially at **joints, valves, and welds**.
+- **Hydrogen embrittlement** weakens metallic components, increasing the likelihood of failure.
+- Conventional sensors and instruments (e.g., flow meters, pressure gauges) calibrated for natural gas may provide **inaccurate readings** with hydrogen blends.
+- **Compression and pressure reduction stations** may not handle hydrogen’s distinct thermodynamic behavior effectively.
 
-The hydrogen transport system is simulated using **Simscape Fluids**, and the dataset includes both normal operation and multiple anomalous scenarios. Federated learning is also employed to ensure **data privacy** and **decentralized intelligence**, reflecting real-world industrial constraints.   
+These limitations necessitate new **monitoring, simulation, and anomaly detection systems** to ensure safe and efficient hydrogen transport.
 
-**Note:** The dataset used in this project is confidential and proprietary to the partner company, subject to strict privacy and non-disclosure agreements, and therefore 
-cannot be publicly shared.
+## 🧠 The Digital Twin Approach
 
-This repository reflects the full methodological evolution of the project—from classical to quantum intelligence and stands as the **central deliverable** of my Ph.D. research.
+We simulate a hydrogen pipeline system using **MATLAB Simscape**, generating multivariate time series from pressure sensors. This Digital Twin enables:
 
-We simulate a hydrogen pipeline system using **Simscape**, collecting multivariate time series from **four pressure sensors**. The dataset includes:
-- A **normal operating scenario**, in which the pressure stabilizes after an initial transient.
-- **Two anomalous scenarios**: local restrictions (valve closures) and compressor failures.
+- Accurate modeling of **transient and steady-state dynamics**.
+- Injection of various **anomalous scenarios**: leaks, compressor failures, delayed responses.
+- Evaluation of **anomaly detection models** under realistic, high-variability conditions.
 
-Anomalies manifest as subtle, asynchronous perturbations across the sensor time series—making this a challenging **multivariate anomaly detection** task.
+## 📊 Dataset Features
 
-**HNARE** is the experimental framework in which we apply:
-1. **Local training** of anomaly detection models on each simulated scenario.
-2. **Federated learning**, where models trained locally share only parameters—not data—preserving privacy and enabling **decentralized intelligence**.
+The synthetic dataset includes:
 
----
+- **Normal operation**: pressure stabilizes after a transient regime.
+- **Anomalies**: compressor faults, local restrictions (valve closures), delayed pressure recovery.
+- **Sensor noise**: optional Gaussian noise added to simulate measurement errors.
+- **Labels**: for normal and anomalous intervals.
 
-This pipeline allows us to compare classical and quantum-enhanced architectures, first in an isolated (local) setting, then within a federated learning framework, providing insight into:
-- How quantum models perform on sparse, multivariate anomalies.
-- How federated learning impacts generalization and robustness.
+## 🧪 Baseline Experiments
 
-<div align="center">
-  
-  <img src="./enea_h2net_v2/hydrogen-station.jpg" alt="Hydrogen Network Station" width="45%">
-  <img src="./enea_h2net_v2/quantum lst.png" alt="Quantum LSTM" width="45%">
-  <br><br>
-  
-  <img src="./enea_h2net_v2/federated-gif.gif" alt="Federated Learning Animation" width="60%">
+As an initial benchmark, we evaluated several standard anomaly detection methods:
 
-</div>
+- **Isolation Forest**
+- **One-Class SVM**
+- **Local Outlier Factor (LOF)**
+- **Elliptic Envelope**
+- **Minimum Covariance Determinant (MCD)**
+- **k-Nearest Neighbors (kNN)**
 
-## 🧪 Dataset & Experimental Versions
+These models were tested under both clean and noisy conditions. Results show that many algorithms struggle to detect subtle, asynchronous deviations caused by anomalies — particularly in the presence of transient regimes and noise.
 
-The project includes two distinct simulation phases, each represented by a separate folder:
+This highlights the need for **more robust learning approaches** tailored to the unique characteristics of hydrogen network dynamics.
 
-- **`enea_h2net_v1/`**  
-  This folder contains early-stage experiments based on a simplified hydrogen network model simulated in **Simscape**. At this stage, anomaly detection was performed using traditional machine learning techniques such as **Isolation Forest**, **One-Class SVM**, and basic **statistical thresholding**.
+## 📁 Repository Structure
 
-- **`enea_h2net_v2/`**  
-  As the initial model proved limited in complexity and realism, we developed a more detailed and representative simulation of the hydrogen transport network. In this phase, we introduced advanced deep learning architectures such as **LSTM**, **QLSTM**, and **QTLSTM** applied both in standalone settings and within a **federated learning** framework to better capture temporal dependencies and asynchronous multivariate anomalies.
+enea_h2net_v1/
+│
+├── anomaly_detection_classifiers/ # Classical baseline models (v1)
+├── jupyter/ # Notebooks for visualization and analysis
+├── time_series_plot/ # Time series plotting utilities
+├── utils/ # Common utility functions
+├── anomaly_detection_hydrogen_network_pressure_sensors.py
+└── output.txt # Example output logs
 
-This evolution reflects the methodological progression of the project: from classical ML on simplified systems to hybrid quantum-classical deep learning in more realistic, complex environments.
-
----
-
-## 📁 Project Structure
-
-```QFAD/
-QFAD/
-├── enea_h2net_v1/
-│   ├── __pycache__/
-│   ├── anomaly_detection_classifiers/
-│   │   ├── __init__.py
-│   │   ├── anomaly_detection_classifier.py
-│   ├── jupyter/
-│   │   └── anomaly_detection_enea.ipynb
-│   ├── time_series_plot/
-│   │   ├── time_series_0.png
-│   │   ├── time_series_1.png
-│   │   ├── time_series_2.png
-│   │   └── time_series_3.png
-│   ├── utils/
-│   │   ├── __init__.py
-│   │   └── utils_data.py
-│   ├── anomaly_detection_classifier.cpython-310.pyc
-│   ├── utils_data.cpython-310.pyc
-│   ├── anomaly_detection_hydrogen_network_pressure_sensors.py
-├── enea_h2net_v2
-    ├── ...
-├── federated-gif.gif
-├── quantum lst.png
-├── trasporto-idrogeno.jpg
-├── output.txt
-└── README.md
-``` 
----
-
-## 🧠 Models Overview
-
-- **LSTM Autoencoder** – classical deep learning baseline.
-- **QLSTM** – LSTM augmented with hybrid quantum-classical gates.
-- **QTLSTM** – Classical LSTM trained using parameters generated from quantum circuits (Quantum Train approach).
----
+enea_h2net_v2/
+│
+├── LSTM_ad.ipynb # LSTM-based anomaly detection (deep learning)
+├── anomaly_detection.ipynb # Model comparison and evaluation
+├── anomaly_labeling_and_noise_simulation.ipynb
+├── results/ # Output results
+└── hydrogen-station.jpg # Schematic illustration
 
 ## 🚀 Getting Started
 
-1. Install the dependencies:
-   ```bash
-   pip install -r requirements.txt
-   git clone https://github.com/andysinx/HQ-FHLRE.git
-   cd HQ-FHLRE
-   ```
+Clone the repository:
 
-## 📈 Results and Validation  
-Section under preparation, pending completion of experiments and evaluation analyses.
+```bash
+git clone https://github.com/andysinx/HQ-FHLRE.git
+cd HQ-FHLRE
+pip install -r requirements.txt
+```
 
-## 🔮 Future Next Steps  
-- Completion of experimentation with hybrid models and federated learning.  
-- Collaboration with the University of Warsaw for acquisition and use of specialized software for advanced gas network modeling, moving towards more realistic simulations.  
-- Development and validation of classical and hybrid quantum Deep Reinforcement Learning models for the localization phase.  
-- Integration of the sensor placement optimization module (optional phase), addressing network topology considerations.
+Run the Jupyter notebooks or scripts in the respective folders to reproduce the experiments.
 
-## 📄 Disclaimer and Notes  
-- The data used are confidential and cannot be publicly shared due to non-disclosure agreements with the industrial partner (ENEA).  
-- The framework is continuously evolving, with implementations and models periodically updated within the scope of the Ph.D. research.
+⚠️ Data Disclaimer
+The dataset is not publicly released.
+It is part of an industrial Ph.D. project in collaboration with ENEA and is protected under confidentiality agreements. Only metadata and architecture descriptions are made available.
 
+👨‍🔬 Project Context
+This work is part of the Industrial Ph.D. program in Computational Intelligence at the University of Naples Federico II, funded by ENEA. It focuses on the development of advanced anomaly detection methods for critical energy infrastructures.
 
 
