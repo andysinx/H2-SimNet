@@ -48,7 +48,6 @@ This highlights the need for **more robust learning approaches** tailored to the
 
 ## 📁 Repository Structure
 ```bash
-.
 enea_h2net_v1/
 │
 ├── anomaly_detection_classifiers/ # Classical baseline models (v1)
