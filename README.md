@@ -48,7 +48,7 @@ This highlights the need for **more robust learning approaches** tailored to the
 
 ## 📁 Repository Structure
 
-enea_h2net_v1/
+### `enea_h2net_v1/
 │
 ├── anomaly_detection_classifiers/ # Classical baseline models (v1)
 ├── jupyter/ # Notebooks for visualization and analysis
@@ -63,7 +63,7 @@ enea_h2net_v2/
 ├── anomaly_detection.ipynb # Model comparison and evaluation
 ├── anomaly_labeling_and_noise_simulation.ipynb
 ├── results/ # Output results
-└── hydrogen-station.jpg # Schematic illustration
+└── hydrogen-station.jpg # Schematic illustration`
 
 ## 🚀 Getting Started
 
