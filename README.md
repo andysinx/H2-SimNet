@@ -13,6 +13,7 @@ Hydrogen is a zero-emission energy carrier with the potential to decarbonize cri
 
 These limitations necessitate new **monitoring, simulation, and anomaly detection systems** to ensure safe and efficient hydrogen transport.
 
+![Hydrogen Station](enea_h2net_v2/hydrogen-station.jpg)
 ## 🧠 The Digital Twin Approach
 
 We simulate a hydrogen pipeline system using **MATLAB Simscape**, generating multivariate time series from pressure sensors. This Digital Twin enables:
