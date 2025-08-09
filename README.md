@@ -22,6 +22,16 @@ We simulate a hydrogen pipeline system using **MATLAB Simscape**, generating mul
 - Injection of various **anomalous scenarios**: leaks, compressor failures, delayed responses.
 - Evaluation of **anomaly detection models** under realistic, high-variability conditions.
 
+## 🗂️ Version History
+
+- **TDADH2 v1** — Initial simplified version of the hydrogen transport network simulation.  
+  Developed as a proof-of-concept and used to benchmark a variety of classical anomaly detection algorithms.  
+  Results from this version were presented at the **AISEM Conference**.
+
+- **TDADH2 v2** — Enhanced and extended version developed for this work.  
+  Includes a more detailed simulation model, additional anomaly scenarios, refined labeling, sensor noise simulation, and an expanded set of baseline models.
+
+
 ## 📊 Dataset Features
 
 The synthetic dataset includes:
