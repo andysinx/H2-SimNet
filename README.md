@@ -70,8 +70,8 @@ enea_h2net_v2/
 Clone the repository:
 
 ```bash
-git clone https://github.com/andysinx/HQ-FHLRE.git
-cd HQ-FHLRE
+git clone https://github.com/andysinx/TDADH2.git
+cd TDADH2
 pip install -r requirements.txt
 ```
 
