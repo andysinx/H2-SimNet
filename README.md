@@ -42,7 +42,7 @@ As an initial benchmark, we evaluated several standard anomaly detection methods
 - **Minimum Covariance Determinant (MCD)**
 - **k-Nearest Neighbors (kNN)**
 
-These models were tested under both clean and noisy conditions. Results show that many algorithms struggle to detect subtle, asynchronous deviations caused by anomalies — particularly in the presence of transient regimes and noise.
+These models were tested under both clean and noisy conditions. Results show that many algorithms struggle to detect subtle, asynchronous deviations caused by anomalies particularly in the presence of transient regimes and noise.
 
 This highlights the need for **more robust learning approaches** tailored to the unique characteristics of hydrogen network dynamics.
 
