@@ -1,6 +1,6 @@
-# 🏭🚨🧯🛠️  TDADH2: A Testbed Dataset for Anomaly Detection in Hydrogen Transport Networks 🧠🤖💻⚛️
+# 🏭🚨🧯🛠️  H2-SimNet: A Preliminary Simulation-Based Testbed for Anomaly Detection in Hydrogen Transport Networks 🧠🤖💻⚛️
 
-This repository provides the simulation framework and baseline models developed in support of the paper _“A Testbed Dataset for Anomaly Detection in Hydrogen Transport Networks”_, which addresses the technical and safety challenges of transporting hydrogen through existing gas pipeline infrastructure.
+This repository provides the simulation framework and baseline models developed in support of the paper “H2-SimNet: A Preliminary Simulation-Based Testbed for Anomaly Detection in Hydrogen Transport Networks”, which addresses the technical and safety challenges of transporting hydrogen through existing gas pipeline infrastructure.
 
 ## 🌍 Motivation
 
