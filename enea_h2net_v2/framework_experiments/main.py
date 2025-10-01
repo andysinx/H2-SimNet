@@ -64,16 +64,3 @@ if __name__ == "__main__":
         model_3 = ConvLSTM_Classifier(input_size=input_size, hidden_size=64, lstm_dropout=0.2, 
                                      cnn_channels=32, kernel_size=3, cnn_dropout=0.2)
         model_3.train_and_test_model(folds=folds, num_epochs=70, lr=1e-4, test_loader=test_loader)
-
-
-#ESPERIMENTI FATTI
-
-'''
-LSTM classico solo su dati di addestramento (no rumore) --> fa tutto 1
-LSTM classico solo su dati di addestramento (con rumore) -> quelli weak sono piu difficili perche rumore sommerge le piccole anomalie
-LSTM classico  su entrambi i dati di addestramento (con/senza rumore) -> fargli vedere il caso senza rumore lo avvantaggia poi su quello col rumore anche se non fa il massimo (migliora rispetto ad avere solo i dati rumorosi)
-LSTM classico su entrambi i dati di addestramento (con/senza rumore) + derivata  -> la derivata migliora il tutto
-Moving average filter + LSTM classico su entrambi i dati di addestramento (con/senza rumore) + derivata --> qua fa tutte 1 le metriche
-Moving average filter + LSTM classico solo su dati di addestramento (con rumore) + derivata -> vanno tutti bene
-Moving average filter + LSTM classico solo su dati di addestramento (con rumore) ---> ci perde qualcosina ma davvero poco quindi la derivata la levo.
-'''
