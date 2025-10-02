@@ -119,16 +119,3 @@ if __name__ == "__main__":
     # Salvataggio alta qualità
     plt.savefig('./ROC_Curve_Aggregate.pdf', dpi=300)
     plt.close()
-
-
-#ESPERIMENTI FATTI
-
-'''
-LSTM classico solo su dati di addestramento (no rumore) --> fa tutto 1
-LSTM classico solo su dati di addestramento (con rumore) -> quelli weak sono piu difficili perche rumore sommerge le piccole anomalie
-LSTM classico  su entrambi i dati di addestramento (con/senza rumore) -> fargli vedere il caso senza rumore lo avvantaggia poi su quello col rumore anche se non fa il massimo (migliora rispetto ad avere solo i dati rumorosi)
-LSTM classico su entrambi i dati di addestramento (con/senza rumore) + derivata  -> la derivata migliora il tutto
-Moving average filter + LSTM classico su entrambi i dati di addestramento (con/senza rumore) + derivata --> qua fa tutte 1 le metriche
-Moving average filter + LSTM classico solo su dati di addestramento (con rumore) + derivata -> vanno tutti bene
-Moving average filter + LSTM classico solo su dati di addestramento (con rumore) ---> ci perde qualcosina ma davvero poco quindi la derivata la levo.
-'''
