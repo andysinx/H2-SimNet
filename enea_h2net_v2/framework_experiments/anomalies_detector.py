@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch.optim as optim
 from torch.utils.data import Dataset
 import torch.nn as nn
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, roc_auc_score, roc_curve
 from build_supervised_dataset import *
 
 
@@ -134,6 +134,7 @@ class LSTMClassifier(nn.Module):
             auc = roc_auc_score(all_labels_test, all_preds_test)
             print(f"\nFinal Test - Loss: {test_loss:.6f}, Acc: {acc:.4f}, Prec: {prec:.4f}, "
                   f"Rec: {rec:.4f}, F1: {f1:.4f}, AUC: {auc:.4f}")
+            return all_labels_test, all_preds_test
 
 
 class ConvLSTM_Classifier(nn.Module):
@@ -253,6 +254,31 @@ class ConvLSTM_Classifier(nn.Module):
             auc = roc_auc_score(all_labels_test, all_preds_test)
             print(f"\nFinal Test - Loss: {test_loss:.6f}, Acc: {acc:.4f}, Prec: {prec:.4f}, "
                   f"Rec: {rec:.4f}, F1: {f1:.4f}, AUC: {auc:.4f}")
+            if test_loader is not None:
+                # --- Test finale ---
+                self.eval()
+                test_loss = 0
+                all_preds_test = []
+                all_labels_test = []
+                with torch.no_grad():
+                    for batch_X, batch_y in test_loader:
+                        batch_X, batch_y = batch_X.to(device), batch_y.to(device).unsqueeze(1)
+                        output = self(batch_X)
+                        test_loss += criterion(output, batch_y).item() * batch_X.size(0)
+                        all_preds_test.append(output.cpu())
+                        all_labels_test.append(batch_y.cpu())
+                test_loss /= len(test_loader.dataset)
+                all_preds_test = torch.cat(all_preds_test).numpy()
+                all_labels_test = torch.cat(all_labels_test).numpy()
+                pred_labels = (all_preds_test >= 0.5).astype(int)
+                acc = accuracy_score(all_labels_test, pred_labels)
+                prec = precision_score(all_labels_test, pred_labels, zero_division=0)
+                rec = recall_score(all_labels_test, pred_labels, zero_division=0)
+                f1 = f1_score(all_labels_test, pred_labels, zero_division=0)
+                auc = roc_auc_score(all_labels_test, all_preds_test)
+                print(f"\nFinal Test - Loss: {test_loss:.6f}, Acc: {acc:.4f}, Prec: {prec:.4f}, "
+                    f"Rec: {rec:.4f}, F1: {f1:.4f}, AUC: {auc:.4f}")
+                return all_labels_test, all_preds_test
 
 
 
@@ -313,7 +339,6 @@ class MLPClassifier(nn.Module):
             print(f"Epoch {epoch+1}/{num_epochs} - Train Loss: {train_loss:.6f}, "
                   f"Val Loss: {val_loss:.6f}, Acc: {acc:.4f}, Prec: {prec:.4f}, "
                   f"Rec: {rec:.4f}, F1: {f1:.4f}, AUC: {auc:.4f}")
-
         return compute_metrics(all_preds_val_fold, all_labels_val_fold)
 
     def train_and_test_model(self, folds=None, test_loader=None, num_epochs=100, lr=1e-4):
@@ -363,5 +388,7 @@ class MLPClassifier(nn.Module):
             auc = roc_auc_score(all_labels_test, all_preds_test)
             print(f"\nFinal Test - Loss: {test_loss:.6f}, Acc: {acc:.4f}, Prec: {prec:.4f}, "
                   f"Rec: {rec:.4f}, F1: {f1:.4f}, AUC: {auc:.4f}")
+            return all_labels_test, all_preds_test
+                  
 
      
