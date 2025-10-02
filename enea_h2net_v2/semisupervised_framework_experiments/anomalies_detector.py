@@ -53,49 +53,6 @@ class LSTMAutoencoder(nn.Module):
 
 
 # -----------------------
-# ConvLSTM Autoencoder (1D conv + LSTM decoder)
-# -----------------------
-class ConvLSTMAutoencoder(nn.Module):
-    def __init__(self, input_size, hidden_size=64, cnn_channels=32, kernel_size=3, latent_size=None, dropout=0.2):
-        super().__init__()
-        if latent_size is None:
-            latent_size = hidden_size
-        # encoder conv -> lstm -> latent
-        self.conv = nn.Sequential(
-            nn.Conv1d(in_channels=input_size, out_channels=cnn_channels, kernel_size=kernel_size, padding=kernel_size//2),
-            nn.ReLU(),
-            nn.Dropout(dropout)
-        )
-        self.encoder_lstm = nn.LSTM(cnn_channels, hidden_size, batch_first=True)
-        self.enc_fc = nn.Linear(hidden_size, latent_size)
-        # decoder: latent -> fc -> lstm -> conv-transpose like output
-        self.dec_fc = nn.Linear(latent_size, hidden_size)
-        self.decoder_lstm = nn.LSTM(hidden_size, cnn_channels, batch_first=True)
-        # map cnn_channels back to original feature dim via 1x1 conv
-        self.out_conv = nn.Conv1d(in_channels=cnn_channels, out_channels=input_size, kernel_size=1)
-        self.dropout = nn.Dropout(dropout)
-
-    def forward(self, x):
-        # x: (B, T, F)
-        B, T, F = x.shape
-        x_c = x.permute(0, 2, 1)            # (B, F, T)
-        c_out = self.conv(x_c)              # (B, C, T)
-        c_out = c_out.permute(0, 2, 1)      # (B, T, C)
-        enc_out, _ = self.encoder_lstm(c_out)
-        z = enc_out[:, -1, :]               # (B, H)
-        z = self.enc_fc(z)                  # (B, latent)
-        z = torch.relu(z)
-        z = self.dropout(z)
-        dec_in = self.dec_fc(z)             # (B, H)
-        dec_seq = dec_in.unsqueeze(1).repeat(1, T, 1)  # (B, T, H)
-        dec_out, _ = self.decoder_lstm(dec_seq)       # (B, T, C)
-        dec_out = dec_out.permute(0, 2, 1)             # (B, C, T)
-        recon = self.out_conv(dec_out)                 # (B, F, T)
-        recon = recon.permute(0, 2, 1)                 # (B, T, F)
-        return recon
-
-
-# -----------------------
 # MLP Autoencoder (flatten -> bottleneck -> reconstruct)
 # -----------------------
 class MLPAutoencoder(nn.Module):
@@ -213,7 +170,7 @@ def train_autoencoder(model, train_loader, val_loader=None, num_epochs=50, lr=1e
     return model
 
 
-def evaluate_unsupervised_cost(model, test_loader, device=None, reduction='mean', alpha=0.6):
+'''def evaluate_unsupervised_cost(model, test_loader, device=None, reduction='mean', alpha=0.8):
     """
     Valuta l'autoencoder su dati di test e calcola threshold minimizzando 
     costo operativo FP + alpha * FN.
@@ -249,15 +206,17 @@ def evaluate_unsupervised_cost(model, test_loader, device=None, reduction='mean'
     
     print(f"Semi Supervised Eval (FP + {alpha}*FN) -> Acc: {acc:.4f}, Prec: {prec:.4f}, Rec: {rec:.4f}, F1: {f1:.4f}, Threshold: {best_thr:.6f}")
     
-    return labels, scores, {'acc': acc, 'prec': prec, 'rec': rec, 'f1': f1, 'threshold': best_thr}
+    return labels, scores, {'acc': acc, 'prec': prec, 'rec': rec, 'f1': f1, 'threshold': best_thr}'''
 
-'''def evaluate_unsupervised_cost(model, test_loader, device=None, reduction='mean',
-                                           alpha_values=None):
+def evaluate_unsupervised_cost(model, test_loader, device=None, reduction='mean',
+                               alpha_values=None, max_acc_drop=0.1):
     """
     Valuta l'autoencoder su dati di test e calcola threshold minimizzando 
     costo operativo FP + alpha * FN per diversi valori di alpha.
     
-    Restituisce le metriche e i threshold ottimali per ciascun alpha.
+    Se alpha_values è None, prova np.arange(0.5, 1.01, 0.1).
+    Seleziona automaticamente l'alpha che riduce FP senza peggiorare troppo l'acc.
+    Stampa tutte le prove e indica quale è stato scelto.
     """
     device = device or ("cuda" if torch.cuda.is_available() else "cpu")
     labels, scores = compute_reconstruction_scores(model, test_loader, device, reduction=reduction)
@@ -269,9 +228,9 @@ def evaluate_unsupervised_cost(model, test_loader, device=None, reduction='mean'
         alpha_values = np.arange(0.5, 1.01, 0.1)
     
     results = {}
+    _, _, thr = roc_curve(labels, scores)
     
-    fpr, tpr, thr = roc_curve(labels, scores)
-    
+    # Calcolo metriche per tutti gli alpha
     for alpha in alpha_values:
         costs = []
         for t in thr:
@@ -299,4 +258,22 @@ def evaluate_unsupervised_cost(model, test_loader, device=None, reduction='mean'
               f"Prec: {results[alpha]['prec']:.4f}, Rec: {results[alpha]['rec']:.4f}, "
               f"F1: {results[alpha]['f1']:.4f}")
     
-    return labels, scores, results'''
+    # Determinare acc massimo
+    max_acc = max([m['acc'] for m in results.values()])
+    
+    # Selezione automatica alpha: FP minimo con acc >= max_acc - max_acc_drop
+    best_alpha = None
+    best_metrics = None
+    for alpha, m in results.items():
+        if m['acc'] >= max_acc - max_acc_drop:
+            if best_metrics is None or m['FP'] < best_metrics['FP']:
+                best_metrics = m
+                best_alpha = alpha
+    
+    print(f"\n=== Alpha selezionato automaticamente: {best_alpha} ===")
+    print(f"Threshold: {best_metrics['threshold']:.4f}, FP: {best_metrics['FP']}, "
+          f"FN: {best_metrics['FN']}, Acc: {best_metrics['acc']:.4f}, "
+          f"Prec: {best_metrics['prec']:.4f}, Rec: {best_metrics['rec']:.4f}, "
+          f"F1: {best_metrics['f1']:.4f}")
+    
+    return labels, scores, best_metrics
