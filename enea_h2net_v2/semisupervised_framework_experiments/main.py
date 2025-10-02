@@ -59,18 +59,9 @@ if __name__ == "__main__":
         print("LSTM Autoencoder:")
         model_lstm = LSTMAutoencoder(input_size=input_size, hidden_size=64, latent_size=32)
         for train_loader, val_loader in folds:
-            model_lstm = train_autoencoder(model_lstm, train_loader, val_loader, num_epochs=100, lr=1e-3, early_stopping=None)
+            model_lstm = train_autoencoder(model_lstm, train_loader, val_loader, num_epochs=50, lr=1e-3, early_stopping=None)
         labels, scores, metrics = evaluate_unsupervised_cost(model_lstm, test_loader)
         scenario_results["LSTM"] = metrics
-
-        # --- CNN+LSTM Autoencoder ---
-        
-        print("CNN + LSTM Autoencoder:")
-        model_cnnlstm = ConvLSTMAutoencoder(input_size=input_size, hidden_size=64, cnn_channels=32, latent_size=32)
-        for train_loader, val_loader in folds:
-            model_cnnlstm = train_autoencoder(model_cnnlstm, train_loader, val_loader, num_epochs=100, lr=1e-3, early_stopping=None)
-        labels, scores, metrics = evaluate_unsupervised_cost(model_cnnlstm, test_loader)
-        scenario_results["CNN+LSTM"] = metrics
 
         results_per_file.append(scenario_results)
 
