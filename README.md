@@ -38,7 +38,7 @@ The synthetic dataset includes:
 - **Normal operation**: pressure stabilizes after a transient regime.
 - **Anomalies**: compressor faults, local restrictions (valve closures), delayed pressure recovery.
 - **Sensor noise**: Gaussian noise added to simulate measurement errors.
-- **Labels**: for normal and anomalous intervals.
+- **Labels**: for normal and anomalous timestamps.
 - **Preprocessing**: moving average filter applied to noisy signals.
 
 ## 🧪 Baseline Experiments
