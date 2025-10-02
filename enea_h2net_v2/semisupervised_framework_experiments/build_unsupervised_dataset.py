@@ -166,13 +166,12 @@ def create_unsupervised_dataset(anomalous_file, window_size=50, step=1, derivati
     # --- Garantiamo circa 5% anomalie nel test set ---
     num_norm = len(X_test_norm)
     desired_anom_count = max(1, int(num_norm * max_anom_ratio))  # circa 5%
-    if len(X_test_anom) > desired_anom_count:
+    num_norm = len(X_test_norm)
+    desired_anom_count = max(1, int(num_norm * max_anom_ratio))  # circa 5%
+    if len(X_test_anom) >= desired_anom_count:
         selected_idx = np.random.choice(len(X_test_anom), desired_anom_count, replace=False)
-    elif len(X_test_anom) < desired_anom_count:
-        # campiona con replacement se necessario
-        selected_idx = np.random.choice(len(X_test_anom), desired_anom_count, replace=True)
     else:
-        selected_idx = np.arange(len(X_test_anom))
+        selected_idx = np.random.choice(len(X_test_anom), desired_anom_count, replace=True)
     X_test_anom = X_test_anom[selected_idx]
     y_test_anom = y_test_anom[selected_idx]
 
