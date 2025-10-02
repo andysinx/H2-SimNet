@@ -64,14 +64,14 @@ enea_h2net_v1/
 
 enea_h2net_v2/
 │
-├── supervised_framework_experiments/
-│   ├── main.py
-│   ├── anomalies_detector.py
-│   └── build_supervised_dataset.py
 ├── semisupervised_framework_experiments/
 │   ├── main.py
 │   ├── anomalies_detector.py
 │   └── build_unsupervised_dataset.py\
+├── supervised_framework_experiments/
+│   ├── main.py
+│   ├── anomalies_detector.py
+│   └── build_supervised_dataset.py
 ├── anomaly_labeling_and_noise_simulation.ipynb
 └── hydrogen-station.jpg # Schematic illustration
 ```
