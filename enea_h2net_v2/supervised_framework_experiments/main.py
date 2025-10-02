@@ -15,7 +15,6 @@ if __name__ == "__main__":
         # assestment_transient
         "assestment_transient/leakG4.parquet",
         "assestment_transient/leakG5G6_overlapped.parquet",
-        "assestment_transient/leakG5G6_overlapped_noisy.parquet",
         # constant_segment
         "constant_segment/brokenC1G5_weak.parquet",
         "constant_segment/brokenC1_strong.parquet",
