@@ -77,8 +77,8 @@ enea_h2net_v2/
 Clone the repository:
 
 ```bash
-git clone https://github.com/andysinx/TDADH2.git
-cd TDADH2
+git clone https://github.com/andysinx/H2-SimNet.git
+cd H2-SimNet
 pip install -r requirements.txt
 ```
 
