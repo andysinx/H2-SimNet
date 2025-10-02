@@ -84,10 +84,6 @@ pip install -r requirements.txt
 
 Run the Jupyter notebooks or scripts in the respective folders to reproduce the experiments.
 
-## ⚠️ Data Disclaimer
-The dataset is not publicly released.
-It is part of an industrial Ph.D. project in collaboration with ENEA Research Center. Only metadata and architecture descriptions are made available.
-
 ## 👨‍🔬 Project Context
 This work is part of the Industrial Ph.D. program in Computational Intelligence at the University of Naples Federico II, funded by ENEA. It focuses on the development of advanced anomaly detection methods for critical energy infrastructures.
 
