@@ -1,6 +1,6 @@
 # 🏭🚨🧯🛠️  H2-SimNet: A Preliminary Simulation-Based Testbed for Anomaly Detection in Hydrogen Transport Networks 🧠🤖💻⚛️
 
-This repository provides the simulation framework and baseline models developed in support of the paper “H2-SimNet: A Preliminary Simulation-Based Testbed for Anomaly Detection in Hydrogen Transport Networks”, which addresses the technical and safety challenges of transporting hydrogen through existing gas pipeline infrastructure.
+This repository provides the simulation framework and supervised baseline models developed in support of the paper “H2-SimNet: A Preliminary Simulation-Based Testbed for Anomaly Detection in Hydrogen Transport Networks”, which addresses the technical and safety challenges of transporting hydrogen through existing gas pipeline infrastructure.
 
 ## 🌍 Motivation
 
@@ -14,23 +14,22 @@ Hydrogen is a zero-emission energy carrier with the potential to decarbonize cri
 These limitations necessitate new **monitoring, simulation, and anomaly detection systems** to ensure safe and efficient hydrogen transport.
 
 ![Hydrogen Station](enea_h2net_v2/hydrogen-station.jpg)
+
 ## 🧠 The Digital Twin Approach
 
 We simulate a hydrogen pipeline system using **MATLAB Simscape**, generating multivariate time series from pressure sensors and mass flow rate sensors. This Digital Twin enables:
 
 - Accurate modeling of **transient and steady-state dynamics**.
 - Injection of various **anomalous scenarios**: leaks, compressor failures, delayed responses.
-- Evaluation of **anomaly detection models** under realistic, high-variability conditions.
+- Evaluation of **supervised anomaly detection models** on **noisy data filtered with a moving average**, reflecting realistic measurement conditions.
 
 ## 🗂️ Version History
 
 - **TDADH2 v1** — Initial simplified version of the hydrogen transport network simulation.  
-  Developed as a proof-of-concept and used to benchmark a variety of classical anomaly detection algorithms.  
-  Results from this version were presented at the **AISEM Conference**.
+  Developed as a proof-of-concept.  
 
 - **TDADH2 v2** — Enhanced and extended version developed for this work.  
-  Includes a more detailed simulation model, additional anomaly scenarios, refined labeling, sensor noise simulation, and an expanded set of baseline models.
-
+  Includes a more detailed simulation model, additional anomaly scenarios, refined labeling, sensor noise simulation, and an expanded set of **supervised baseline models**.
 
 ## 📊 Dataset Features
 
@@ -38,23 +37,19 @@ The synthetic dataset includes:
 
 - **Normal operation**: pressure stabilizes after a transient regime.
 - **Anomalies**: compressor faults, local restrictions (valve closures), delayed pressure recovery.
-- **Sensor noise**: optional Gaussian noise added to simulate measurement errors.
+- **Sensor noise**: Gaussian noise added to simulate measurement errors.
 - **Labels**: for normal and anomalous intervals.
+- **Preprocessing**: moving average filter applied to noisy signals.
 
 ## 🧪 Baseline Experiments
 
-As an initial benchmark, we evaluated several standard anomaly detection methods:
+As an initial benchmark, we evaluated several **supervised learning models** on the **noisy, filtered data**:
 
-- **Isolation Forest**
-- **One-Class SVM**
-- **Local Outlier Factor (LOF)**
-- **Elliptic Envelope**
-- **Minimum Covariance Determinant (MCD)**
-- **k-Nearest Neighbors (kNN)**
+- **MLP (Multi-Layer Perceptron)**  
+- **LSTM (Long Short-Term Memory network)**  
+- **CNN+LSTM (Convolutional + LSTM network)**  
 
-These models were tested under both clean and noisy conditions. Results show that many algorithms struggle to detect subtle, asynchronous deviations caused by anomalies particularly in the presence of transient regimes and noise.
-
-This highlights the need for **more robust learning approaches** tailored to the unique characteristics of hydrogen network dynamics.
+These models capture temporal patterns in the noisy sensor data and allow robust anomaly detection in hydrogen transport networks.
 
 ## 📁 Repository Structure
 ```bash
@@ -69,12 +64,14 @@ enea_h2net_v1/
 
 enea_h2net_v2/
 │
-├── LSTM_ad.ipynb # LSTM-based anomaly detection (deep learning)
-├── anomaly_detection.ipynb # Model comparison and evaluation
-├── anomaly_labeling_and_noise_simulation.ipynb
+├── framework_experiments/
+│   ├── main.py
+│   ├── anomalies_detector.py
+│   └── build_supervised_dataset.py
 ├── results/ # Output results
-└── hydrogen-station.jpg # Schematic illustration`
+└── hydrogen-station.jpg # Schematic illustration
 ```
+
 ## 🚀 Getting Started
 
 Clone the repository:
@@ -89,7 +86,7 @@ Run the Jupyter notebooks or scripts in the respective folders to reproduce the 
 
 ## ⚠️ Data Disclaimer
 The dataset is not publicly released.
-It is part of an industrial Ph.D. project in collaboration with ENEA and is protected under confidentiality agreements. Only metadata and architecture descriptions are made available.
+It is part of an industrial Ph.D. project in collaboration with ENEA Research Center. Only metadata and architecture descriptions are made available.
 
 ## 👨‍🔬 Project Context
 This work is part of the Industrial Ph.D. program in Computational Intelligence at the University of Naples Federico II, funded by ENEA. It focuses on the development of advanced anomaly detection methods for critical energy infrastructures.
