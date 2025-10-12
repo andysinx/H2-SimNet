@@ -327,8 +327,8 @@ def evaluate_unsupervised_cost(model, test_loader, file_name, device=None,
                                output_txt="analysis_res.txt"):
     import seaborn as sns
     """
-    Valuta l'autoencoder su dati di test usando diversi percentili come threshold.
-    Salva i risultati in un file txt e la curva ROC come immagine .png.
+    Evaluate autoencoder on test data with different percentile for thresholding.
+    Saved result in a txt file and a ROC CUrve in a .png. 
     """
 
     device = device or ("cuda" if torch.cuda.is_available() else "cpu")
