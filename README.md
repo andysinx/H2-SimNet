@@ -49,11 +49,11 @@ As an initial benchmark, we evaluated several **supervised learning models** on 
 - **LSTM (Long Short-Term Memory network) -> Seq2Lab**  
 - **CNN+LSTM (Convolutional + LSTM network)**
 - 
-For the actual unsupervised anomaly detection, the following autoencoder-based models were considered:
+For the unsupervised anomaly detection, the following autoencoder-based models were considered:
 
 - **AE (Standard Autoencoder)** 
 - **LSTM-AE (LSTM Autoencoder)** 
-- **CNN-LSTM-AE (Hybrid CNN + LSTM Autoencoder)** 
+- **CNN-LSTM-AE (CNN + LSTM Autoencoder)** 
 
 These models capture temporal patterns in the noisy sensor data and allow robust anomaly detection in hydrogen transport networks.
 
