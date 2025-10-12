@@ -46,8 +46,14 @@ The synthetic dataset includes:
 As an initial benchmark, we evaluated several **supervised learning models** on the **noisy, filtered data**:
 
 - **MLP (Multi-Layer Perceptron)**  
-- **LSTM (Long Short-Term Memory network)**  
-- **CNN+LSTM (Convolutional + LSTM network)**  
+- **LSTM (Long Short-Term Memory network) -> Seq2Lab**  
+- **CNN+LSTM (Convolutional + LSTM network)**
+- 
+For the actual unsupervised anomaly detection, the following autoencoder-based models were considered:
+
+- **AE (Standard Autoencoder)** 
+- **LSTM-AE (LSTM Autoencoder)** 
+- **CNN-LSTM-AE (Hybrid CNN + LSTM Autoencoder)** 
 
 These models capture temporal patterns in the noisy sensor data and allow robust anomaly detection in hydrogen transport networks.
 
