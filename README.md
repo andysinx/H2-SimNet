@@ -70,7 +70,7 @@ enea_h2net_v1/
 
 enea_h2net_v2/
 │
-├── semisupervised_framework_experiments/
+├── unsupervised_framework_experiments/
 │   ├── main.py
 │   ├── anomalies_detector.py
 │   └── build_unsupervised_dataset.py\
