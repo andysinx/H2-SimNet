@@ -1,6 +1,6 @@
 # 🏭🚨🧯🛠️  H2-SimNet: A Preliminary Simulation-Based Testbed for Anomaly Detection in Hydrogen Transport Networks 🧠🤖💻⚛️
 
-This repository provides the simulation framework and supervised baseline models developed in support of the paper “H2-SimNet: A Preliminary Simulation-Based Testbed for Anomaly Detection in Hydrogen Transport Networks”, which addresses the technical and safety challenges of transporting hydrogen through existing gas pipeline infrastructure.
+This repository provides the simulation framework, Neural baseline models, and Optimal Sensor Placement (OSP) framework developed in support of the paper “H2-SimNet: A Preliminary Simulation-Based Testbed for Anomaly Detection in Hydrogen Transport Networks”, which addresses the technical and safety challenges of transporting hydrogen through existing gas pipeline infrastructure. The proposed framework is designed as a unified Digital Twin environment that integrates data-driven anomaly detection models with a learning-based sensor placement strategy, enabling both robust monitoring and optimal sensing design for hydrogen transport networks.
 
 ## 🌍 Motivation
 
