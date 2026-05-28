@@ -76,7 +76,7 @@ Within H2-SimNet, the OSP module plays a fundamental role in enabling a coherent
   Developed as a proof-of-concept.  
 
 - **TDADH2 v2** — Enhanced and extended version developed for this work.  
-  Includes a more detailed simulation model, additional anomaly scenarios, refined labeling, sensor noise simulation, and an expanded set of **supervised baseline models**.
+  Includes a more detailed simulation model, additional anomaly scenarios, refined labeling, sensor noise simulation, optimal sensor placement, and an expanded set of **supervised baseline models**.
 
 ## 📊 Dataset Features
 
