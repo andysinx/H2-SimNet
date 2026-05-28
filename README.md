@@ -23,6 +23,53 @@ We simulate a hydrogen pipeline system using **MATLAB Simscape**, generating mul
 - Injection of various **anomalous scenarios**: leaks, compressor failures, delayed responses.
 - Evaluation of **supervised anomaly detection models** on **noisy data filtered with a moving average**, reflecting realistic measurement conditions.
 
+## 🎯 Optimal Sensor Placement (OSP)
+
+H2-SimNet integrates a complete **Optimal Sensor Placement (OSP)** framework for hydrogen transport networks, designed as part of a unified **Digital Twin architecture** that jointly addresses sensing, simulation, and anomaly detection.
+
+The objective of the OSP module is to identify the optimal configuration of pressure sensors across the network, maximizing the system’s ability to detect and characterize anomalous conditions (such as leaks, compressor faults, and transient disturbances), while minimizing sensor redundancy and overall deployment cost.
+
+### 🧠 Data-driven modeling via neural surrogate
+
+The sensor placement problem is formulated in a fully data-driven manner through a **neural surrogate model** that learns to estimate the impact of different sensor configurations on the performance of the anomaly detection system.
+
+- Each configuration is evaluated in terms of its ability to improve state reconstruction and anomaly detection within the Digital Twin.
+- The informative contribution of individual sensors is learned directly from data.
+- Pairwise interactions explicitly capture redundancy and complementarity effects between sensors.
+
+This establishes a direct link between sensor deployment strategies and the actual performance of the monitoring and detection pipeline.
+
+### ⚙️ QUBO formulation
+
+The problem is expressed as a **:contentReference[oaicite:0]{index=0}** model, where:
+
+- binary variables represent whether a sensor is activated or not;
+- linear terms encode individual sensor informativeness;
+- quadratic terms capture interactions between sensors (redundancy or synergy);
+- a soft penalty term controls the total number of deployed sensors.
+
+The resulting energy function jointly balances detection performance and sparsity of the sensor configuration.
+
+### ⚛️ Quantum and hybrid optimization via QAOA
+
+The QUBO formulation is mapped into the framework of the **:contentReference[oaicite:1]{index=1}**, which solves the optimization problem through a variational quantum circuit composed of:
+
+- alternating cost and mixer layers;
+- variational parameters optimized within a hybrid classical–quantum loop.
+
+Circuit parameters are optimized using a global evolutionary strategy followed by local refinement via memetic optimization, ensuring effective exploration of highly non-convex parameter landscapes.
+
+### 🔬 Role within H2-SimNet and the Digital Twin
+
+Within H2-SimNet, the OSP module plays a fundamental role in enabling a coherent Digital Twin workflow by:
+
+- optimizing sensor deployment across hydrogen transport networks;
+- improving the quality of system state observability;
+- enhancing the performance of anomaly detection models;
+- reducing measurement redundancy and sensing costs;
+- enabling co-design of physical infrastructure and intelligent monitoring layers.
+
+
 ## 🗂️ Version History
 
 - **TDADH2 v1** — Initial simplified version of the hydrogen transport network simulation.  
@@ -78,6 +125,7 @@ enea_h2net_v2/
 │   ├── main.py
 │   ├── anomalies_detector.py
 │   └── build_supervised_dataset.py
+├── optimal_sensor_placement/
 ├── anomaly_labeling_and_noise_simulation.ipynb
 └── hydrogen-station.jpg # Schematic illustration
 ```
