@@ -59,6 +59,7 @@ The QUBO formulation is mapped into the framework of the **:contentReference[oai
 
 Circuit parameters are optimized using a global evolutionary strategy followed by local refinement via memetic optimization, ensuring effective exploration of highly non-convex parameter landscapes.
 
+📄 [Hydrogen Optimal Sensor Placement Framework](enea_h2net_v2/optimal_sensor_placement/architecture_framework.pdf)
 ### 🔬 Role within H2-SimNet and the Digital Twin
 
 Within H2-SimNet, the OSP module plays a fundamental role in enabling a coherent Digital Twin workflow by:
