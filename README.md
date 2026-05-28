@@ -131,10 +131,11 @@ enea_h2net_v2/
     ├── mut_info_delta_loss_estimation.py
     ├── mut_info_delta_loss_pair_estimation.py
     └── result/
-        ├──
-        ├──
-        ├──
-        └──
+        ├── heatmap_grid_resume.pdf
+        ├── pareto_grid_resume.pdf
+        ├── sensor_ranking_gestcenter.pdf
+        ├── sensor_ranking_gestup.pdf
+        └── sensor_ranking_gestdown.pdf
 ├── anomaly_labeling_and_noise_simulation.ipynb
 └── hydrogen-station.jpg # Schematic illustration
 ```
