@@ -135,7 +135,13 @@ enea_h2net_v2/
         ├── pareto_grid_resume.pdf
         ├── sensor_ranking_gestcenter.pdf
         ├── sensor_ranking_gestup.pdf
-        └── sensor_ranking_gestdown.pdf
+        ├── sensor_ranking_gestdown.pdf
+        ├── pairwise_heatmap_gestcenter.pdf
+        ├── pairwise_heatmap_gestdown.pdf
+        ├── pairwise_heatmap_gestup.pdf
+        ├── top_pairs_gestcenter.pdf
+        ├── top_pairs_gestdown.pdf
+        └── top_pairs_gestup.pdf
 ├── anomaly_labeling_and_noise_simulation.ipynb
 └── hydrogen-station.jpg # Schematic illustration
 ```
