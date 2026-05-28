@@ -126,6 +126,15 @@ enea_h2net_v2/
 │   ├── anomalies_detector.py
 │   └── build_supervised_dataset.py
 ├── optimal_sensor_placement/
+    ├── QUBO_opt_deploy_realsim.py
+    ├── QUBO_opt_deploy_shots.py
+    ├── mut_info_delta_loss_estimation.py
+    ├── mut_info_delta_loss_pair_estimation.py
+    └── result/
+        ├──
+        ├──
+        ├──
+        └──
 ├── anomaly_labeling_and_noise_simulation.ipynb
 └── hydrogen-station.jpg # Schematic illustration
 ```
